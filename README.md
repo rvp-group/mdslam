@@ -1,5 +1,8 @@
 <h1 align="center">MD-SLAM: Multi-cue Direct SLAM</h1>
+
+<p align="center">
 Versatile direct SLAM pipeline that works for RGB-D and LiDAR
+</p>
 
 <p align="center">
     <a href="https://digiamm.github.io">Luca Di Giammarino</a><sup>1</sup> &emsp;
@@ -22,7 +25,7 @@ Versatile direct SLAM pipeline that works for RGB-D and LiDAR
     <a href="https://arxiv.org/abs/2203.13237">arXiv</a>
 </p>
 
-<p float="left">
+<p align="center">
   <img src="assets/md_rgbd.gif" width="400" />
   <img src="assets/md_lidar.gif" width="400" /> 
 </p>
@@ -110,13 +113,15 @@ if set enables cerr and cout streams
 ```
 
 <h3>View data</h3>
+
 If you run MD-SLAM with `-o` you can save the graph and the point clouds attached to it. If you want to see the output data is enough to run
 ```
 rosrun md_slam show_graph -i path/to/output/file
 ```
 
 <h3>Evaluate data</h3>
-The file generated from the pipeline containing the graph, can be converted in TUM format
+
+The file generated from the pipeline containing the graph, can be converted in [TUM](https://vision.in.tum.de/data/datasets/rgbd-dataset/file_formats) groundtruth format
 ```
 timestamp tx ty tz qx qy qz qw
 ``` 
@@ -151,6 +156,7 @@ For instance, for an OS0-128 with `v_fov_max = pi/4`, `v_fov_min = -pi/4` with `
 K: [-162.9746551513672, 0.0, 512.0, 0.0, -79.22404479980469, 64.0, 0.0, 0.0, 1.0]
 ```
 <h3>Input cues - images</h3>
+
 <b>RGB-D</b> data usually already comes with grayscale and depth images already "syncronized". For <b>LiDAR</b> one can generate both intensity and range images from the point cloud by just using a spherical projection (look at the [paper](https://arxiv.org/abs/2203.13237) for more info).  
 <h2> Process your data with our utilities </h2>   
 
