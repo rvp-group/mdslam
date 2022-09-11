@@ -8,4 +8,6 @@ Once the image is built, run the docker image, specifying as argument the path t
 ```
 ./run path-to-dataset-folder
 ```
-Now [execute](run) MD-SLAM
+Now can follow the main README.md from section <b>Run MD-SLAM</b>
+
+NOTE: still some problems with our viewer from docker. If you use the docker you cannot vizualize properly the data. This will be fixed soon!
