@@ -35,7 +35,7 @@ Versatile direct SLAM pipeline that works for RGB-D and LiDAR
 
 <h2>Data download</h2>
 
-[Download](https://drive.google.com/drive/folders/1tq3R881MS7IyD-w7f3jbKUzlxDZzV1u7?usp=sharing) our pre-processed data. This trial data contains: [Newer College Dataset](https://ori-drs.github.io/newer-college-dataset), [ETH3D](https://www.eth3d.net/slam_datasets) and some self-recorded one. All our data is in `rosbag` format.
+[Download](https://drive.google.com/drive/folders/1tq3R881MS7IyD-w7f3jbKUzlxDZzV1u7?usp=sharing) our pre-processed data. This trial data contains: [Newer College Dataset](https://ori-drs.github.io/newer-college-dataset), [ETH3D](https://www.eth3d.net/slam_datasets) and some self-recorded one. All our data is in `rosbag` format. NOTE: more data will be uploaded in the next days.
 
 <h2>Docker</h2>
 Before you locally install anything, bear in mind that you can use our <b>[docker](docker/README.md)</b>.
