@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>md_slam</name>
+  <version>0.2.0</version>
+  <description>MD-SLAM: Multi-cue direct SLAM</description>
+  <maintainer email="digiammarino@diag.uniroma1.it">Luca Di Giammarino</maintainer>
+  <maintainer email="brizi@diag.uniroma1.it">Leonardo Brizi</maintainer>
+  <license>BSD-4</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>srrg_cmake_modules</depend>
+  <depend>srrg2_core</depend>
+  <depend>srrg2_core_ros</depend>
+  <depend>srrg2_solver</depend>
+  <depend>srrg_hbst</depend>
+</package>

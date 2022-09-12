@@ -1,0 +1,11 @@
+*.cproject
+*.project
+*.vscode
+*.settings/
+*.settings/*
+*/.settings/*
+*~
+
+# md slam stuff
+*.boss
+*.d
