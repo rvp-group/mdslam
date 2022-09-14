@@ -76,13 +76,13 @@ Build package and dependencies using `catkin_tools`
 ```
 cd ~/catkin_ws && catkin build md_slam 
 ```
-
-<h2 name=run>Run MD-SLAM</h2>
-
-Source workspace
+Finally, source workspace
 ```
 source ~/catkin_ws/devel/setup.bash
 ```
+
+<h2 name=run>Run MD-SLAM</h2>
+
 Run the pipeline
 ```
 rosrun md_slam md_slam -i path/to/dataset -c path/to/configuration/file
