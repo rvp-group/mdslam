@@ -38,12 +38,14 @@ namespace srrg2_core {
   void DrawablePyramidVariableSE3VBO::draw(const Eigen::Matrix4f& projection,
                                            const Eigen::Matrix4f& model_pose,
                                            const Eigen::Matrix4f& object_pose,
-                                           const Eigen::Vector3f& light_direction) {
+                                           const Eigen::Vector3f& light_direction,
+                                           const bool draw_cloud) {
     if (!(_cloud_vbo && _camera_pose_vbo))
       return;
 
     Eigen::Matrix4f this_object_pose = object_pose * _instance->estimate().matrix();
-    _cloud_vbo->draw(projection, model_pose, this_object_pose, light_direction);
+    if (draw_cloud)
+      _cloud_vbo->draw(projection, model_pose, this_object_pose, light_direction);
     _camera_pose_vbo->draw(projection, model_pose, this_object_pose, light_direction);
   }
 

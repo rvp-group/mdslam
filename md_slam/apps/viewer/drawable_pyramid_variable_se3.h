@@ -17,7 +17,8 @@ namespace srrg2_core {
     void draw(const Eigen::Matrix4f& projection,
               const Eigen::Matrix4f& model_pose,
               const Eigen::Matrix4f& object_pose,
-              const Eigen::Vector3f& light_direction) override;
+              const Eigen::Vector3f& light_direction,
+              const bool draw_cloud) override;
 
     std::shared_ptr<PointNormalIntensity3fVectorCloudVBO> _cloud_vbo;
     static std::shared_ptr<CameraPoseVBO> _camera_pose_vbo;

@@ -83,5 +83,7 @@ namespace srrg2_core {
     glEnableVertexAttribArray(1);
     glEnableVertexAttribArray(2);
     glDrawArrays(GL_POINTS, 0, _cloud.size());
+
+    // std::cerr << "suca!" << std::endl;
   }
 } // namespace srrg2_core

@@ -19,7 +19,8 @@ namespace srrg2_core {
     void draw(const Eigen::Matrix4f& projection,
               const Eigen::Matrix4f& model_pose,
               const Eigen::Matrix4f& object_pose,
-              const Eigen::Vector3f& light_direction) override;
+              const Eigen::Vector3f& light_direction,
+              const bool draw_cloud) override;
 
     std::shared_ptr<FactorsBinaryVBO> _factors_binary_vbo;
     std::map<VariableBase::Id, std::shared_ptr<DrawablePyramidVariableSE3VBO>> _variables_vbo;

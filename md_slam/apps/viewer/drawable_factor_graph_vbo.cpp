@@ -45,9 +45,10 @@ namespace srrg2_core {
   void DrawableFactorGraphVBO::draw(const Eigen::Matrix4f& projection,
                                     const Eigen::Matrix4f& model_pose,
                                     const Eigen::Matrix4f& object_pose,
-                                    const Eigen::Vector3f& light_direction) {
+                                    const Eigen::Vector3f& light_direction,
+                                    const bool draw_cloud) {
     for (auto v_it : _variables_vbo) {
-      v_it.second->draw(projection, model_pose, object_pose, light_direction);
+      v_it.second->draw(projection, model_pose, object_pose, light_direction, draw_cloud);
     }
     if (_factors_binary_vbo)
       _factors_binary_vbo->draw(projection, model_pose, object_pose, light_direction);

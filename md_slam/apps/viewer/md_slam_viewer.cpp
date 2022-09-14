@@ -39,6 +39,15 @@ namespace srrg2_core {
     setMouseBinding(Qt::NoModifier, Qt::RightButton, CAMERA, ZOOM);
     setMouseBinding(Qt::NoModifier, Qt::MidButton, CAMERA, TRANSLATE);
     setMouseBinding(Qt::ControlModifier, Qt::LeftButton, RAP_FROM_PIXEL);
+    setKeyDescription(Qt::Key_C, "Draw/undraw pointcloud");
+  }
+
+  void MDViewer::keyPressEvent(QKeyEvent* e) {
+    // defines the showing cloud shortcut
+    if (e->key() == Qt::Key_C) {
+      _draw_cloud = !_draw_cloud;
+    } else
+      QGLViewer::keyPressEvent(e);
   }
 
   void MDViewer::draw() {
@@ -57,7 +66,7 @@ namespace srrg2_core {
     _camera_pose(2, 3)     = 0;
     model                  = model * _camera_pose.matrix().inverse();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    _graph_vbo->draw(projection, model, mat, light_direction);
+    _graph_vbo->draw(projection, model, mat, light_direction, _draw_cloud);
     _proc_mutex.unlock();
   }
 
