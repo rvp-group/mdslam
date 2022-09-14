@@ -1,7 +1,11 @@
 <h1 align="center">MD-SLAM: Multi-cue Direct SLAM</h1>
 
 <p align="center">
-Versatile direct SLAM pipeline that works for RGB-D and LiDAR
+Versatile direct SLAM pipeline that works for RGB-D and LiDAR. 
+</p>
+
+<p align="center">
+Implements the first photometric LiDAR SLAM pipeline, that works withouth any explicit geometrical assumption.
 </p>
 
 <p align="center">
