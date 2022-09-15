@@ -6,4 +6,4 @@ IMAGE_NAME=${IMAGE_NAME#*=}
 
 # problems whith visualization
 xhost +
-docker run --gpus all -ti --rm --env="DISPLAY" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" --privileged -v $1:/working_dir ${IMAGE_NAME} 
+docker run --gpus all -ti --rm --env="DISPLAY" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" --privileged -v $1:/working_dir ${IMAGE_NAME} bash -c "source /opt/ros/noetic/setup.bash && bash -c 'roscore > /dev/null &' && /bin/bash"

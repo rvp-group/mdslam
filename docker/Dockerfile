@@ -39,7 +39,11 @@ RUN source /opt/ros/noetic/setup.bash && cd /catkin_ws && catkin init && catkin 
 
 COPY ./dl.conf /dl.conf
 
-COPY ./ros_entrypoint.sh /ros_entrypoint.sh
-ENTRYPOINT ["/ros_entrypoint.sh"]
-CMD ["bash"]
+WORKDIR /
+#COPY ./ros_entrypoint.sh ros_entrypoint.sh
+#ENTRYPOINT ["/ros_entrypoint.sh"]
+#RUN bash -c "source '/catkin_ws/devel/setup.bash' && echo 'source /catkin_ws/devel/setup.bash' >> /.bashrc"
+RUN bash -c "source /opt/ros/noetic/setup.bash \
+    && echo 'source /catkin_ws/devel/setup.bash' >> ~/.bashrc"
+#CMD ["bash"]
 
