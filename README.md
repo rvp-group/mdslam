@@ -1,7 +1,11 @@
 <h1 align="center">MD-SLAM: Multi-cue Direct SLAM</h1>
 
 <p align="center">
-Versatile direct SLAM pipeline that works for RGB-D and LiDAR
+Versatile direct SLAM pipeline that works for RGB-D and LiDAR. 
+</p>
+
+<p align="center">
+Implements the first <b>photometric LiDAR SLAM</b> pipeline, that works withouth any explicit geometrical assumption.
 </p>
 
 <p align="center">
@@ -76,13 +80,13 @@ Build package and dependencies using `catkin_tools`
 ```
 cd ~/catkin_ws && catkin build md_slam 
 ```
-
-<h2 name=run>Run MD-SLAM</h2>
-
-Source workspace
+Finally, source workspace
 ```
 source ~/catkin_ws/devel/setup.bash
 ```
+
+<h2 name=run>Run MD-SLAM</h2>
+
 Run the pipeline
 ```
 rosrun md_slam md_slam -i path/to/dataset -c path/to/configuration/file
