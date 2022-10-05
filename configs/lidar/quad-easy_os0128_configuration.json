@@ -1,596 +1,496 @@
-"SimpleTerminationCriteria" { 
-  "#id" : 1, 
-
+"SimpleTerminationCriteria"{
+  "#id": 1,
   // ratio of decay of chi2 between iteration
-  "epsilon" : 0.00100000005
- }
+  "epsilon": 0.00100000005
+}
 
-"IterationAlgorithmLM" { 
-  "#id" : 2, 
-
+"IterationAlgorithmLM"{
+  "#id": 2,
   // max lm iterations [default: 10]
-  "lm_iterations_max" : 10, 
-
+  "lm_iterations_max": 10,
   // upper clamp for lambda if things go well
-  "step_high" : 0.666666985, 
-
+  "step_high": 0.666666985,
   // lower clamp for lambda if things go well 
-  "step_low" : 0.333333343, 
-
+  "step_low": 0.333333343,
   // scale factor for the lambda computed by the system, do not influence the one provided by the user [default: 1e-5]
-  "tau" : 9.99999975e-06, 
-
+  "tau": 9.99999975e-06,
   // initial lm lambda, if 0 is computed by system [default: 0]
-  "user_lambda_init" : 0, 
-
+  "user_lambda_init": 0,
   // set to true uses lambda*diag(H), otherwise uses lambda*I [default: true]
-  "variable_damping" : 1
- }
+  "variable_damping": 1
+}
 
-"IterationAlgorithmGN" { 
-  "#id" : 3, 
-
+"IterationAlgorithmGN"{
+  "#id": 3,
   // damping factor, the higher the closer to gradient descend. Default:0
-  "damping" : 1
- }
+  "damping": 1
+}
 
-"MDCloser" { 
-  "#id" : 4, 
-  "name" : "closer", 
-
+"MDCloser"{
+  "#id": 4,
+  "name": "closer",
   // loop detector to detect loop, for now only HBST
-  "loop_det" : { 
-    "#pointer" : 5
-   }, 
-
+  "loop_det": {
+    "#pointer": 5
+  },
   // loop validator to perform geometric verification
-  "loop_validator" : { 
-    "#pointer" : 6
-   }, 
-
+  "loop_validator": {
+    "#pointer": 6
+  },
   // neighboorood search radius for non max suppresion
-  "nms_radius" : 2
- }
+  "nms_radius": 2
+}
 
-"MessageFileSink" { 
-  "#id" : 7, 
-  "name" : "writer", 
-
-  // file to write
-  "filename" : "test_pyrwrite.boss", 
-  "push_sinks" : [  ], 
-
-  // name of the transform tree to subscribe to
-  "tf_topic" : "/tf", 
-
-  // verbose
-  "verbose" : 0
- }
-
-"LoopValidator" { 
-  "#id" : 6, 
-  "name" : "validator", 
-
+"LoopValidator"{
+  "#id": 6,
+  "name": "validator",
   // if not set to -1, 0 for pinhole projection, 1 for spherical projection
-  "camera_type" : 1, 
-
+  "camera_type": 1,
   // max reprojection error when evaluating best fitting model
-  "max_reprojection_error" : 4, 
-
+  "max_reprojection_error": 3,
   // min num inliers after RANSAC validation
-  "min_num_inliers" : 6, 
-
+  "min_num_inliers": 7,
   // min number of correspondences to use with SVD ICP and RANSAC
-  "min_ransac_correspondences" : 3, 
-
+  "min_ransac_correspondences": 3,
   // min number of correspondences to use with SVD ICP and RANSAC
-  "ransac_rounds" : 435
- }
+  "ransac_rounds": 500
+}
 
-"SparseBlockLinearSolverCholmodFull" { 
-  "#id" : 8
- }
+"SparseBlockLinearSolverCholmodFull"{
+  "#id": 8
+}
 
-"SparseBlockLinearSolverLDL" { 
-  "#id" : 9
- }
+"SparseBlockLinearSolverLDL"{
+  "#id": 9
+}
 
-"MDGraphManager" { 
-  "#id" : 10, 
-  "name" : "graph_manager", 
-
+"MDGraphManager"{
+  "#id": 10,
+  "name": "graph_manager",
   // enable closures
-  "enable_closures" : 1, 
-
+  "enable_closures": 1,
   // map frame id of the graph
-  "map_frame_id" : "/md_map", 
-
+  "map_frame_id": "/md_map",
   // closer manager for md
-  "closer" : { 
-    "#pointer" : 4
-   }, 
-
+  "closer": {
+    "#pointer": 4
+  },
   // photometric pairwise aligner, takes 2 pyramids gives you a pose
-  "pairwise_aligner" : { 
-    "#pointer" : 15
-   }, 
-  "push_sinks" : [  ], 
-
+  "pairwise_aligner": {
+    "#pointer": 15
+  },
+  "push_sinks": [],
   // pose-graph solver
-  "solver" : { 
-    "#pointer" : 11
-   }, 
-
+  "solver": {
+    "#pointer": 11
+  },
   // tracker status
-  "status_topic" : "/md_tracker_status", 
-
+  "status_topic": "/md_tracker_status",
   // topic where to push the dynamic transforms
-  "tf_dyn_topic" : "/tf", 
-
+  "tf_dyn_topic": "/tf",
   // name of the transform tree to subscribe to
-  "tf_topic" : "",
-  "angle_check" : 0.034,
-  "translation_check" : 0.184
- }
+  "tf_topic": ""
+}
 
-"Solver" { 
-  "#id" : 11, 
-  "name" : "solver_pgo", 
-  "actions" : [  ], 
-
+"Solver"{
+  "#id": 11,
+  "name": "solver_pgo",
+  "actions": [],
   // pointer to the optimization algorithm (GN/LM or others)
-  "algorithm" : { 
-    "#pointer" : 12
-   }, 
-
+  "algorithm": {
+    "#pointer": 12
+  },
   // pointer to linear solver used to compute Hx=b
-  "linear_solver" : { 
-    "#pointer" : 8
-   }, 
-  "max_iterations" : [ 10 ], 
-
+  "linear_solver": {
+    "#pointer": 8
+  },
+  "max_iterations": [
+    10
+  ],
   // Minimum mean square error variation to perform global optimization
-  "mse_threshold" : -1, 
-  "robustifier_policies" : [  ], 
-
+  "mse_threshold": -1,
+  "robustifier_policies": [],
   // term criteria ptr, if 0 solver will do max iterations
-  "termination_criteria" : { 
-    "#pointer" : 1
-   }, 
-
+  "termination_criteria": {
+    "#pointer": 1
+  },
   // turn it off to make the world a better place
-  "verbose" : 0
- }
+  "verbose": 0
+}
 
-"SimpleTerminationCriteria" { 
-  "#id" : 13, 
-
+"SimpleTerminationCriteria"{
+  "#id": 13,
   // ratio of decay of chi2 between iteration
-  "epsilon" : 9.99999975e-06
- }
+  "epsilon": 9.99999975e-06
+}
 
-"SimpleTerminationCriteria" { 
-  "#id" : 14, 
-
+"SimpleTerminationCriteria"{
+  "#id": 14,
   // ratio of decay of chi2 between iteration
-  "epsilon" : 9.99999975e-06
- }
+  "epsilon": 9.99999975e-06
+}
 
-"MDPairwiseAligner" { 
-  "#id" : 15, 
-  "name" : "pairwise_aligner_closures", 
-
+"MDPairwiseAligner"{
+  "#id": 15,
+  "name": "pairwise_aligner_closures",
   // points with a depth error higher than this are rejected
-  "depth_rejection_threshold" : 4.91, 
-
+  "depth_rejection_threshold": 5,
   // above this chi2, kernel acts
-  "kernel_chi_threshold" : 4.26, 
-
+  "kernel_chi_threshold": 5,
   // omega for the depth cue
-  "omega_depth" : 1.11, 
-
+  "omega_depth": 1,
   // omega for the intensity cue
-  "omega_intensity" : 0.97, 
-
+  "omega_intensity": 1,
   // omega for the normal cue
-  "omega_normal" : 0.71, 
-
+  "omega_normal": 1,
   // solver running photometric alignment
-  "solver" : { 
-    "#pointer" : 16
-   }
- }
+  "solver": {
+    "#pointer": 16
+  }
+}
 
-"SparseBlockLinearSolverCholeskyCSparse" { 
-  "#id" : 17
- }
+"SparseBlockLinearSolverCholeskyCSparse"{
+  "#id": 17
+}
 
-"LoopDetectorHBST" { 
-  "#id" : 5, 
-  "name" : "hbst", 
-
+"LoopDetectorHBST"{
+  "#id": 5,
+  "name": "hbst",
   // enables matches container filtering based on the match score
-  "enable_matches_filtering" : 1, 
-
+  "enable_matches_filtering": 1,
   // frame interspace to consider a match
-  "frame_interspace" : 80, 
-
+  "frame_interspace": 80,
   // maximum distance (Hamming) between descriptors
-  "max_descriptor_distance" : 34, 
-
+  "max_descriptor_distance": 27,
   // minimum ratio between the number of framepoints in the query and in the match
-  "minimum_matching_ratio" : 0.03
- }
+  "minimum_matching_ratio": 0.03
+}
 
-"MDNormalComputator2DCrossProduct" { 
-  "#id" : 18, 
-  "name" : "normcomp", 
-
+"MDNormalComputator2DCrossProduct"{
+  "#id": 18,
+  "name": "normcomp",
   // col gap for computing cross product
-  "col_gap" : 3, 
-
+  "col_gap": 3,
   // row gap for computing cross product
-  "row_gap" : 3, 
-
+  "row_gap": 3,
   // squared max distance between points to compute the normal
-  "squared_max_distance" : 0.300000012
- }
+  "squared_max_distance": 0.300000012
+}
 
-"MDPyramidGenerator" { 
-  "#id" : 19, 
-  "name" : "pyrgen", 
-
+"MDPyramidGenerator"{
+  "#id": 19,
+  "name": "pyrgen",
   // set true blur adaptevely based on depth value
-  "adaptive_blur" : 0, 
-
+  "adaptive_blur": 0,
   // base_link_of_the_robot
-  "base_frame_id" : "/os_imu", 
-
+  "base_frame_id": "/os_imu",
   // if not set to -1, overrides the type of the camera to selected value
-  "cam_type_override" : 1, 
-
+  "cam_type_override": 1,
   // topic where the camera info is broadcasted
-  "camera_info_topic" : "/os/camera_info", 
-
+  "camera_info_topic": "/os/camera_info",
   // applies a pre-scaling to the image cols
-  "col_prescaling" : 4, 
-
+  "col_prescaling": 5,
   // todo
-  "depth_derivative_threshold" : 12, 
-
+  "depth_derivative_threshold": 10,
   // filter policy for Depth {0 Ignore, 1 Suppress, 2 Clamp}
-  "depth_policy" : 1, 
-
+  "depth_policy": 1,
   // if not set to a negative value, overrides the depth scale in camera info
-  "depth_scale_override" : 0.00999999978, 
-
+  "depth_scale_override": 0.00999999978,
   // topic for the depth image, registered to the intensity channel
-  "depth_topic" : "/os/image_depth", 
-
+  "depth_topic": "/os/image_depth",
   // todo
-  "intensity_derivative_threshold" : 100, 
-
+  "intensity_derivative_threshold": 210,
   // filter policy for Intensity {0 Ignore, 1 Suppress, 2 Clamp}
-  "intensity_policy" : 0, 
-
+  "intensity_policy": 0,
   // topic for the depth image, registered to the intensity channel
-  "intensity_topic" : "/os/image_intensity", 
-
+  "intensity_topic": "/os/image_intensity",
   // radius to grow invalid mask
-  "mask_grow_radius" : 1, 
-
+  "mask_grow_radius": 1,
   // max depth to consider while generating pyramids
-  "max_depth" : 71, 
-
+  "max_depth": 70,
   // min depth to consider while generating pyramids
-  "min_depth" : 0.15, 
-
+  "min_depth": 0.1,
   // algorithm to compute the normals
-  "normal_computator" : { 
-    "#pointer" : 18
-   }, 
-
+  "normal_computator": {
+    "#pointer": 18
+  },
   // window size for normals blurring
-  "normals_blur_region_size" : 3, 
-
+  "normals_blur_region_size": 3,
   // todo
-  "normals_derivative_threshold" : 0.16, 
-
+  "normals_derivative_threshold": 0.3,
   // filter policy for Normals {0 Ignore, 1 Suppress, 2 Clamp}
-  "normals_policy" : 0, 
-
+  "normals_policy": 0,
   // normal blurring factor
-  "normals_scaled_blur_multiplier" : 1, 
-  "push_sinks" : [ { 
-  "#pointer" : 7
- }, { 
-  "#pointer" : 20
- }, { 
-  "#pointer" : 10
- }, { 
-  "#pointer" : 21
- } ], 
-
+  "normals_scaled_blur_multiplier": 1,
+  "push_sinks": [
+    {
+      "#pointer": 20
+    },
+    {
+      "#pointer": 10
+    },
+    {
+      "#pointer": 21
+    }
+  ],
   // topic of the pyramid to generate
-  "pyramid_output_topic" : "/md_pyramid", 
-
+  "pyramid_output_topic": "/md_pyramid",
   // radius factor impacting bilinear filtering for depth smoothing
-  "radius_factor" : 2, 
-
+  "radius_factor": 2,
   // applies a pre-scaling to the image rows
-  "row_prescaling" : 1, 
-  "scales" : [ 1, 2, 4 ], 
-
+  "row_prescaling": 1,
+  "scales": [
+    1,
+    2,
+    4
+  ],
   // name of the transform tree to subscribe to
-  "tf_topic" : "/tf_static"
- }
+  "tf_topic": "/tf_static"
+}
 
-"Solver" { 
-  "#id" : 22, 
-  "name" : "photometric_solver", 
-  "actions" : [ { 
-  "#pointer" : 23
- }, { 
-  "#pointer" : 24
- } ], 
-
+"Solver"{
+  "#id": 22,
+  "name": "photometric_solver",
+  "actions": [
+    {
+      "#pointer": 23
+    },
+    {
+      "#pointer": 24
+    }
+  ],
   // pointer to the optimization algorithm (GN/LM or others)
-  "algorithm" : { 
-    "#pointer" : 3
-   }, 
-
+  "algorithm": {
+    "#pointer": 3
+  },
   // pointer to linear solver used to compute Hx=b
-  "linear_solver" : { 
-    "#pointer" : 9
-   }, 
-  "max_iterations" : [ 5, 10, 100 ], 
-
+  "linear_solver": {
+    "#pointer": 9
+  },
+  "max_iterations": [
+    5,
+    10,
+    100
+  ],
   // Minimum mean square error variation to perform global optimization
-  "mse_threshold" : -1, 
-  "robustifier_policies" : [  ], 
-
+  "mse_threshold": -1,
+  "robustifier_policies": [],
   // term criteria ptr, if 0 solver will do max iterations
-  "termination_criteria" : { 
-    "#pointer" : -1
-   }, 
-
+  "termination_criteria": {
+    "#pointer": -1
+  },
   // turn it off to make the world a better place
-  "verbose" : 0
- }
+  "verbose": 0
+}
 
-"MDTrackerStandalone" { 
-  "#id" : 21, 
-  "name" : "tracker",
-
+"MDTrackerStandalone"{
+  "#id": 21,
+  "name": "tracker",
   // base_link_of_the_robot
-  "base_frame_id" : "/base_link", 
-
+  "base_frame_id": "/base_link",
   // if set to true enable imu in tracking
-  "enable_imu" : 0, 
-
+  "enable_imu": 0,
   // pose of current keyframe in md map origin
-  "keyframe_frame_id" : "/md_keyframe", 
-
+  "keyframe_frame_id": "/md_keyframe",
   // rotations above this, change keyframe
-  "keyframe_rotation" : 1.41, 
-
+  "keyframe_rotation": 0.8,
   // how many frames between keyframes
-  "keyframe_steps" : 10, 
-
+  "keyframe_steps": 10,
   // translations above this, change keyframe
-  "keyframe_translation" : 2.26, 
-
+  "keyframe_translation": 2.1,
   // pose of current frame in keyframe
-  "local_frame_id" : "/md_local", 
-
+  "local_frame_id": "/md_local",
   // md_origin_frame_id
-  "origin_frame_id" : "/md_origin", 
-
+  "origin_frame_id": "/md_origin",
   // photometric pairwise aligner, takes 2 pyramids gives you a pose
-  "pairwise_aligner" : { 
-    "#pointer" : 25
-   }, 
-  "push_sinks" : [ { 
-  "#pointer" : 20
- }, { 
-  "#pointer" : 10
- } ], 
-
+  "pairwise_aligner": {
+    "#pointer": 25
+  },
+  "push_sinks": [
+    {
+      "#pointer": 20
+    },
+    {
+      "#pointer": 10
+    }
+  ],
   // topic of the pyramid to listen
-  "pyramid_topic" : "/md_pyramid", 
-
+  "pyramid_topic": "/md_pyramid",
   // topic where to push the dynamic transforms
-  "tf_dyn_topic" : "/tf", 
-
+  "tf_dyn_topic": "/tf",
   // name of the transform tree to subscribe to
-  "tf_topic" : "/tf_static"
- }
+  "tf_topic": "/tf_static"
+}
 
-"MessageSynchronizedSink" { 
-  "#id" : 26, 
-
+"MessageSynchronizedSink"{
+  "#id": 26,
   // name of the frame in the message pack
-  "output_frame_id" : "pack_frame_id", 
-
+  "output_frame_id": "pack_frame_id",
   // name of the topic in the message pack
-  "output_topic" : "/pack", 
-  "push_sinks" : [ { 
-  "#pointer" : 19
- } ], 
-
+  "output_topic": "/pack",
+  "push_sinks": [
+    {
+      "#pointer": 19
+    }
+  ],
   // name of the transform tree to subscribe to
-  "tf_topic" : "", 
-
+  "tf_topic": "",
   // interval for the messages to be sinchronized
-  "time_interval" : 0.10000000000000001, 
-  "topics" : [ "/os/image_depth", "/os/image_intensity", "/os/camera_info" ]
- }
+  "time_interval": 0.10000000000000001,
+  "topics": [
+    "/os/image_depth",
+    "/os/image_intensity",
+    "/os/camera_info"
+  ]
+}
 
-"MessageROSBagSource" { 
-  "#id" : 27, 
-  "name" : "source", 
-
+"MessageROSBagSource"{
+  "#id": 27,
+  "name": "source",
   // file to read
-  "filename" : "my_bag.bag", 
-  "topics" : [ "/os/image_depth", "/os/image_intensity", "/os/camera_info", "/os/imu" ], 
-
+  "filename": "my_bag.bag",
+  "topics": [
+    "/os/image_depth",
+    "/os/image_intensity",
+    "/os/camera_info",
+    "/os/imu"
+  ],
   // verbose
-  "verbose" : 0
- }
+  "verbose": 0
+}
 
-"MDTrackerViewer" { 
-  "#id" : 20, 
-  "name" : "viewer_clouds", 
-  "push_sinks" : [  ], 
-
+"MDTrackerViewer"{
+  "#id": 20,
+  "name": "viewer_clouds",
+  "push_sinks": [],
   // tracker status
-  "status_topic" : "/md_tracker_status", 
-
+  "status_topic": "/md_tracker_status",
   // name of the transform tree to subscribe to
-  "tf_topic" : "", 
-
+  "tf_topic": "",
   // coordinates resolution
-  "voxelize_coord_res" : 0.0500000007, 
-
+  "voxelize_coord_res": 0.0500000007,
   // when to voxelize
-  "voxelize_interval" : 10, 
-
+  "voxelize_interval": 10,
   // normal resolution
-  "voxelize_normal_res" : 0
- }
+  "voxelize_normal_res": 0
+}
 
-"PipelineRunner" { 
-  "#id" : 28, 
-  "name" : "runner", 
-  "push_sinks" : [ { 
-  "#pointer" : 29
- } ], 
-
+"PipelineRunner"{
+  "#id": 28,
+  "name": "runner",
+  "push_sinks": [
+    {
+      "#pointer": 29
+    }
+  ],
   // the source of the pipeline
-  "source" : { 
-    "#pointer" : 27
-   }, 
-
+  "source": {
+    "#pointer": 27
+  },
   // name of the transform tree to subscribe to
-  "tf_topic" : ""
- }
+  "tf_topic": ""
+}
 
-"Solver" { 
-  "#id" : 16, 
-  "name" : "photometric_solver_closures", 
-  "actions" : [  ], 
-
+"Solver"{
+  "#id": 16,
+  "name": "photometric_solver_closures",
+  "actions": [],
   // pointer to the optimization algorithm (GN/LM or others)
-  "algorithm" : { 
-    "#pointer" : 2
-   }, 
-
+  "algorithm": {
+    "#pointer": 2
+  },
   // pointer to linear solver used to compute Hx=b
-  "linear_solver" : { 
-    "#pointer" : 30
-   }, 
-  "max_iterations" : [ 5, 10, 100 ], 
-
+  "linear_solver": {
+    "#pointer": 30
+  },
+  "max_iterations": [
+    5,
+    10,
+    100
+  ],
   // Minimum mean square error variation to perform global optimization
-  "mse_threshold" : -1, 
-  "robustifier_policies" : [  ], 
-
+  "mse_threshold": -1,
+  "robustifier_policies": [],
   // term criteria ptr, if 0 solver will do max iterations
-  "termination_criteria" : { 
-    "#pointer" : 14
-   }, 
-
+  "termination_criteria": {
+    "#pointer": 14
+  },
   // turn it off to make the world a better place
-  "verbose" : 0
- }
+  "verbose": 0
+}
 
-"SparseBlockLinearSolverCholeskyCSparse" { 
-  "#id" : 30
- }
+"SparseBlockLinearSolverCholeskyCSparse"{
+  "#id": 30
+}
 
-"SolverPreemptAction" { 
-  "#id" : 24, 
-
+"SolverPreemptAction"{
+  "#id": 24,
   // event to which react
-  "event" : 3, 
-
+  "event": 3,
   // priority of the event, higher is 0
-  "priority" : 1
- }
+  "priority": 1
+}
 
-"MDFactorShowAction" { 
-  "#id" : 23, 
-  "name" : "mostraligner", 
-
+"MDFactorShowAction"{
+  "#id": 23,
+  "name": "mostraligner",
   // event to which react
-  "event" : 3, 
-
+  "event": 3,
   // priority of the event, higher is 0
-  "priority" : 0
- }
+  "priority": 0
+}
 
-"SolverVerboseAction" { 
-  "#id" : 31, 
-
+"SolverVerboseAction"{
+  "#id": 31,
   // event to which react
-  "event" : 3, 
-
+  "event": 3,
   // priority of the event, higher is 0
-  "priority" : 2
- }
+  "priority": 2
+}
 
-"MDPairwiseAligner" { 
-  "#id" : 25, 
-  "name" : "pairwise_aligner", 
-
+"MDPairwiseAligner"{
+  "#id": 25,
+  "name": "pairwise_aligner",
   // points with a depth error higher than this are rejected
-  "depth_rejection_threshold" : 3.09, 
-
+  "depth_rejection_threshold": 1.5,
   // above this chi2, kernel acts
-  "kernel_chi_threshold" : 2.46, 
-
+  "kernel_chi_threshold": 3,
   // omega for the depth cue
-  "omega_depth" : 0.88, 
-
+  "omega_depth": 1,
   // omega for the intensity cue
-  "omega_intensity" : 0.73, 
-
+  "omega_intensity": 0.9,
   // omega for the normal cue
-  "omega_normal" : 0.02, 
-
+  "omega_normal": 0.2,
   // solver running photometric alignment
-  "solver" : { 
-    "#pointer" : 22
-   }
- }
+  "solver": {
+    "#pointer": 22
+  }
+}
 
-"MessageSortedSink" { 
-  "#id" : 29, 
-  "name" : "sink", 
-
+"MessageSortedSink"{
+  "#id": 29,
+  "name": "sink",
   // messages older than this lag that will be blasted, no matta what
-  "oblivion_interval" : 5, 
-  "push_sinks" : [ { 
-  "#pointer" : 26
- }, { 
-  "#pointer" : 21
- } ], 
-
+  "oblivion_interval": 5,
+  "push_sinks": [
+    {
+      "#pointer": 26
+    },
+    {
+      "#pointer": 21
+    }
+  ],
   // name of the transform tree to subscribe to
-  "tf_topic" : "", 
-
+  "tf_topic": "",
   // lag time to sort messages
-  "time_interval" : 1, 
-
+  "time_interval": 1,
   // if set prints crap
-  "verbose" : 0
- }
+  "verbose": 0
+}
 
-"IterationAlgorithmGN" { 
-  "#id" : 12, 
-  "name" : "pgo_solver", 
-
+"IterationAlgorithmGN"{
+  "#id": 12,
+  "name": "pgo_solver",
   // damping factor, the higher the closer to gradient descend. Default:0
-  "damping" : 1
- }
-
+  "damping": 1
+}
