@@ -196,13 +196,20 @@ NOTE: this can be used to process any LiDAR rosbag but we only tested on [Newer 
 
 Thank you for citing [MD-SLAM](https://arxiv.org/abs/2203.13237) (accepted IROS 2022), if you use any of this code.
 ```
-@article{di2022md,
+@inproceedings{di2022md,
   title={MD-SLAM: Multi-cue Direct SLAM},
   author={Di Giammarino, Luca and Brizi, Leonardo and Guadagnino, Tiziano and Stachniss, Cyrill and Grisetti, Giorgio},
-  journal={arXiv preprint arXiv:2203.13237},
-  year={2022}
+  booktitle={2022 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  pages={11047--11054},
+  year={2022},
+  organization={IEEE}
 }
 ```
+
+<h1> Update </h2>
+An update version of MD-SLAM including a photometric Bundle Adjustment implementation for RGB-D and LiDAR in CUDA will be soon available <a href="https://github.com/digiamm/ba_md_slam">here</a>. 
+  
+
 
 
 
