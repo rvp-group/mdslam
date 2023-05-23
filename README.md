@@ -8,6 +8,9 @@ Versatile direct SLAM pipeline that works for RGB-D and LiDAR.
 Implements the first <b>photometric LiDAR SLAM</b> pipeline, that works withouth any explicit geometrical assumption.
 </p>
 
+<h1> Update </h2>
+An update version of MD-SLAM including a photometric Bundle Adjustment implementation for RGB-D and LiDAR in CUDA is now available <a href="https://github.com/digiamm/ba_md_slam">here</a>. 
+
 <p align="center">
     <a href="https://digiamm.github.io">Luca Di Giammarino</a><sup>1</sup> &emsp;
     <a href="https://www.linkedin.com/in/leobrizi">Leonardo Brizi</a><sup>1</sup> &emsp;
@@ -205,9 +208,6 @@ Thank you for citing [MD-SLAM](https://arxiv.org/abs/2203.13237) (accepted IROS 
   organization={IEEE}
 }
 ```
-
-<h1> Update </h2>
-An update version of MD-SLAM including a photometric Bundle Adjustment implementation for RGB-D and LiDAR in CUDA will be soon available <a href="https://github.com/digiamm/ba_md_slam">here</a>. 
   
 
 
