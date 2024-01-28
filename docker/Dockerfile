@@ -26,7 +26,7 @@ RUN apt-get install -y python3-pip python3-catkin-tools ros-noetic-grid-map-msgs
 RUN mkdir -p /catkin_ws/src
 
 # clone useful pkgs
-RUN cd /catkin_ws/src && git clone https://github.com/digiamm/md_slam.git
+RUN cd /catkin_ws/src && git clone https://github.com/rvp-group/md_slam.git
 # RUN cd /catkin_ws/src && git clone https://gitlab.com/srrg-software/md_slam.git
 RUN cd /catkin_ws/src && git clone https://gitlab.com/srrg-software/srrg_cmake_modules.git 
 RUN cd /catkin_ws/src && git clone https://gitlab.com/srrg-software/srrg_hbst.git 
